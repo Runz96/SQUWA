@@ -1,0 +1,167 @@
+data:
+  path:
+    train:
+      x_signal_path: 
+      x_quality_path: 
+      x_cluster_path: 
+      ypath: 
+    test:
+      x_signal_path: 
+      x_quality_path:
+      ypath: 
+    valid:
+      x_signal_path: 
+      x_quality_path: 
+      ypath:
+  loader:   
+    batch_size: 1024
+    num_workers: 8
+    pin_memory: True
+    drop_last: False
+    persistent_workers: False
+
+model:
+  task: binary
+  num_classes: 2
+  lr: 0.0001
+  lr_warmup_ratio: 0.1
+  use_lr_scheduler: True
+  loss_name: gce
+  use_cmc_loss: False
+  weighting_stragegy: UW
+  task_num: 2
+  device: cuda
+  config:
+    hyperparams:
+      signal_generator:
+        in_channels: 1
+        intermediate_channels: 32
+        kernel_sizes: [119, 479, 799]
+        stride: 1
+      feature_extractor:
+        num_layers: 18
+        channels: 1
+        time_dim: 112
+        feat_dim: 64
+        layer_norm: False
+        dim_change: True
+      quality_assessor_dim: 112
+      rnn_type: GRU
+      rnn:
+        hidden_size: 64
+        num_layers: 1
+        batch_first: True
+        dropout: 0.2
+        bidirectional: False
+      classifier:
+        num_classes: 2
+    model:
+      composite_signal_generator:
+        inception_module:
+          raw_signal:
+            small_gate: 1
+            medium_gate: 1
+            large_gate: 1
+          first_derivative:
+            small_gate: 1
+            medium_gate: 1
+            large_gate: 1
+          second_derivative:
+            small_gate: 1
+            medium_gate: 1
+            large_gate: 1
+        attention_module: 1
+      signal_compositor: 1
+      feature_extractor: 1
+      rnn: 1
+      quality_assessor: 1
+      seq2seq_classification: 0
+    metrics:
+      accuracy: 1
+      cf_matrix: 0
+      f1: 1
+    # device: cuda
+
+trainer:
+  parameters:
+    accelerator: gpu
+    strategy: auto
+    devices: auto
+    num_nodes: 1
+    precision: 16
+    fast_dev_run: False
+    max_epochs: 30
+    min_epochs: 1
+    max_steps: -1
+    min_steps: null
+    max_time: null
+    limit_train_batches: 1.0
+    limit_val_batches: 1.0
+    limit_test_batches: null
+    limit_predict_batches: null
+    overfit_batches: 0.0
+    val_check_interval: null
+    check_val_every_n_epoch: 1
+    num_sanity_val_steps: 0
+    log_every_n_steps: 200
+    enable_checkpointing: True
+    enable_progress_bar: True
+    enable_model_summary: null
+    accumulate_grad_batches: 1
+    gradient_clip_val: null
+    gradient_clip_algorithm: null
+    deterministic: null
+    benchmark: null
+    inference_mode: True
+    profiler: null
+    detect_anomaly: False
+    plugins: null
+    sync_batchnorm: False
+    reload_dataloaders_every_n_epochs: 0
+    default_root_dir: null
+  logger:
+    tensorboard:
+      save_dir: tb_logs/
+      name: ""
+      version: null
+      log_graph: False
+      default_hp_metric: True
+      prefix: ""
+      sub_dir: null
+  callbacks:
+    model_checkpoint:
+      dirpath: null
+      filename: null
+      monitor: valid_loss
+      verbose: True
+      save_last: True
+      save_top_k: 3
+      save_weights_only: False
+      mode: min
+      auto_insert_metric_name: True
+      every_n_train_steps: null
+      train_time_interval: null
+      every_n_epochs: null
+      save_on_train_epoch_end: null
+    early_stop:
+      monitor: valid_loss
+      min_delta: 0.0
+      patience: 10
+      verbose: True
+      mode: min
+      strict: True
+      check_finite: True
+      stopping_threshold: null
+      divergence_threshold: null
+      check_on_train_epoch_end: null
+      log_rank_zero_only: False
+    progress_bar:
+      refresh_rate: 10
+      process_position: 0
+
+experiment:
+  train: True
+  test: False
+  resume_ckpt: False
+  ckpt_path: null
+  saved_model_path: null
