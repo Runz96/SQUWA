@@ -7,7 +7,7 @@
 
 ## Overview of SQUWA
 
-We present a new DNN architecture, SQUWA, for AF detection using PPG data, which includes an innovative attention mechanism. Unlike traditional methods that discard low-quality signals, SQUWA dynamically weighs PPG segments based on their signal quality, directly incorporating this into the AF detection process. This mechanism prioritizes higher-quality segments during prediction and reduces the influence of noisier ones, optimizing the use of data in the overall analysis. Additionally, it processes data points individually rather than as a uniform sample, enhancing detection accuracy and effectiveness. The design principles of SQUWA could also be applied to other fields like human activity and speech recognition, addressing similar issues with noisy data.
+We present a new DNN architecture, *SQUWA*, for AF detection using PPG data, which includes an innovative attention mechanism. Unlike traditional methods that discard low-quality signals, *SQUWA* dynamically weighs PPG segments based on their signal quality, directly incorporating this into the AF detection process. This mechanism prioritizes higher-quality segments during prediction and reduces the influence of noisier ones, optimizing the use of data in the overall analysis. Additionally, it processes data points individually rather than as a uniform sample, enhancing detection accuracy and effectiveness. The design principles of *SQUWA* could also be applied to other fields like human activity and speech recognition, addressing similar issues with noisy data.
 
 <p align="center">
 <img src="https://github.com/Runz96/SQUWA/blob/main/image/noisy_ppg.png">
