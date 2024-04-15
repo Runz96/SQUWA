@@ -2,7 +2,7 @@
 
 ## Authors: [Runze Yan](https://scholar.google.com/citations?user=GnubTzsAAAAJ&hl=en) (ryan30@emory.edu), Cheng Ding, Ran Xiao, Alex Fedorov, Randall J Lee, Fadi Nahab, [Xiao Hu](https://www.nursing.emory.edu/faculty-staff/xiao-hu) (xiao.hu@emory.edu)
 
-## SQUWA Paper: CHIL 2024
+## SQUWA Paper: [CHIL 2024](https://chilconference.org/)
 
 
 ## Overview of SQUWA
