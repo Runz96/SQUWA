@@ -48,7 +48,7 @@ python train.py
 If you find *SQUWA* useful for your research, please consider citing this paper:
 
 ### Lisence
-Raincoat codebase is under MIT license. For individual dataset usage, please refer to the dataset license found in the website.
+*SQUWA* codebase is under MIT license. For individual dataset usage, please refer to the dataset license found in the website.
 
 
 
