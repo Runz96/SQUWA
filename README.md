@@ -22,7 +22,6 @@ First, clone the GitHub repository:
 
 ```
 git clone https://github.com/Runz96/SQUWA
-cd Raincoat
 ```
 
 
