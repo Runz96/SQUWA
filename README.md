@@ -47,6 +47,13 @@ python train.py
 ### Citation
 If you find *SQUWA* useful for your research, please consider citing this paper:
 
+@article{yan2024squwa,
+  title={SQUWA: Signal Quality Aware DNN Architecture for Enhanced Accuracy in Atrial Fibrillation Detection from Noisy PPG Signals},
+  author={Yan, Runze and Ding, Cheng and Xiao, Ran and Fedorov, Aleksandr and Lee, Randall J and Nahab, Fadi and Hu, Xiao},
+  journal={arXiv preprint arXiv:2404.15353},
+  year={2024}
+}
+
 ### Lisence
 *SQUWA* codebase is under MIT license. For individual dataset usage, please refer to the dataset license found in the website.
 
